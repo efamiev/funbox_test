@@ -1,0 +1,48 @@
+version: '3'
+services:
+  api-common:
+    build: .
+    volumes:
+      - .:/home/app/funbox
+    working_dir: /home/app/funbox
+
+  api-dev:
+    image: funbox_api-common
+    volumes:
+      - .:/home/app/funbox
+    working_dir: /home/app/funbox
+    ports:
+      - 4000:4000
+    environment:
+      - MIX_ENV=dev
+      - PORT=4000
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    command: mix run --no-halt
+
+  api-test:
+    image: funbox_api-common
+    volumes:
+      - .:/home/app/funbox
+    working_dir: /home/app/funbox
+    environment:
+      - MIX_ENV=test
+      - PORT=4001
+      - REDIS_PORT=6370
+      - REDIS_HOST=redis-test
+    depends_on:
+      - redis-test
+    command: mix test
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  redis-test:
+    image: redis
+    ports: 
+      - 6370:6370
+    command: redis-server --port 6370
