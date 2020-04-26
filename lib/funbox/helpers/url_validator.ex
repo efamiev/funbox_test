@@ -1,13 +1,12 @@
 defmodule Funbox.Helpers.Url do
-  @spec get_host_name(String.t()) :: String.t()
   def get_host_name(url) do
     case URI.parse(url) do
-      %{:host => nil} -> url |> add_protocol |> get_host_name
+      %{:scheme => nil} -> url |> add_scheme |> get_host_name
       %{:host => host} -> host
     end
   end
 
-  defp add_protocol(url) do
+  defp add_scheme(url) do
     "http://#{url}"
   end
 end

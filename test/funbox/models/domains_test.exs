@@ -3,7 +3,7 @@ defmodule Funbox.Models.DomainsTest do
 
   alias Funbox.Models.Domains
 
-  @domains_list ["ya.ru", "funbox.ru"]
+  @domains_list ["funbox.ru", "ya.ru"]
   @timestamp 1_545_221_231
 
   describe "writing data to the db" do
@@ -13,7 +13,7 @@ defmodule Funbox.Models.DomainsTest do
     end
 
     test "valid timestamp and domains list" do
-      {status, resp} = Domains.set(@timestamp, @domains_list)
+      {status, _} = Domains.set(@timestamp, @domains_list)
 
       assert status == :ok
     end

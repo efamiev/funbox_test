@@ -16,4 +16,11 @@ defmodule Funbox.Api do
   match _ do
     send_resp(conn, 404, "Oops!")
   end
+
+  def on_error_fn(conn, errors) do
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(422, Poison.encode!(%{status: errors}))
+    |> halt
+  end
 end

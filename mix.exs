@@ -24,7 +24,8 @@ defmodule Funbox.MixProject do
     [
       {:poison, "~> 4.0.1"},
       {:plug_cowboy, "~> 2.1.2"},
-      {:redix, "~> 0.10.5"}
+      {:redix, "~> 0.10.5"},
+      {:plug_validator, "~> 0.1.0"}
     ]
   end
 end
