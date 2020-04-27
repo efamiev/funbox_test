@@ -1,16 +1,9 @@
 version: '3'
 services:
-  api-common:
+  api:
     build: .
     volumes:
       - .:/home/app/funbox
-    working_dir: /home/app/funbox
-
-  api:
-    image: funbox_api-common
-    volumes:
-      - .:/home/app/funbox
-    working_dir: /home/app/funbox
     ports:
       - 4000:4000
     environment:
@@ -23,10 +16,9 @@ services:
     command: mix run --no-halt
 
   api-test:
-    image: funbox_api-common
+    image: funbox_test_api
     volumes:
       - .:/home/app/funbox
-    working_dir: /home/app/funbox
     environment:
       - MIX_ENV=test
       - PORT=4001

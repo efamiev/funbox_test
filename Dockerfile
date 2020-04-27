@@ -1,5 +1,8 @@
 FROM elixir:latest
 
-RUN mix local.hex --force && mix local.rebar --force
+COPY ./ /home/app/funbox
 
-WORKDIR /home/app
+WORKDIR /home/app/funbox
+
+RUN mix local.hex --force && mix local.rebar --force
+RUN mix deps.get

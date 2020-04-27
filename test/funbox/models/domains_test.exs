@@ -44,7 +44,7 @@ defmodule Funbox.Models.DomainsTest do
       {status, resp} = Domains.get(@timestamp, @timestamp)
 
       assert status == :ok
-      assert resp == @domains_list
+      assert resp == @domains_list || resp == Enum.reverse(@domains_list)
     end
   end
 
