@@ -6,7 +6,7 @@ services:
       - .:/home/app/funbox
     working_dir: /home/app/funbox
 
-  api-dev:
+  api:
     image: funbox_api-common
     volumes:
       - .:/home/app/funbox

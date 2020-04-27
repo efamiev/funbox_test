@@ -4,15 +4,15 @@ defmodule Funbox.Routes.VisitedDomainsTest do
 
   alias Funbox.Api
 
-  # @opts Api.init([])
+  @opts Api.init([])
 
-  # test "returns visited domains list with a valid payload" do
-  #   conn =
-  #     :get
-  #     |> conn("/visited_domains", %{from: 1_545_221_231, to: 1_545_217_638})
-  #     |> Api.call(@opts)
+  test "returns visited domains list with a valid payload" do
+    conn =
+      :get
+      |> conn("/visited_domains", %{from: "1545221231", to: "1545217638"})
+      |> Api.call(@opts)
 
-  #   {:ok, res} = Poison.decode(conn.resp_body)
-  #   assert res["links"] == []
-  # end
+    {:ok, res} = Poison.decode(conn.resp_body)
+    assert res["links"] == []
+  end
 end
