@@ -1,21 +1,24 @@
-# Funbox
+## Запуск проекта
 
-**TODO: Add description**
+***Предпочтительно запускать проект через docker***
 
-## Installation
+### С помощью докера
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `funbox` to your list of dependencies in `mix.exs`:
+запуск апи ```docker-compose up api```
 
-```elixir
-def deps do
-  [
-    {:funbox, "~> 0.1.0"}
-  ]
-end
-```
+запуск тестов ```docker-compose up api-test```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/funbox](https://hexdocs.pm/funbox).
+### Запуск проекты без docker-контейнеров
 
+1. установить redis
+2. установить переменные среды, а именно:
+
+  PORT- порт, на котором запустится апи
+
+  REDIS_HOST- хост redis
+
+  REDIS_PORT- порт redis
+
+#### переменные можно просмотреть в config/config.exs
+
+3. в папке проекта выполнить команду ```mix run --no-halt```
